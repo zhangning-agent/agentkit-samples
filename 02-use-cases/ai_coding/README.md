@@ -101,7 +101,7 @@ export AGENTKIT_TOOL_ID={{your tool_id}}
 本地可以使用 veadk web 进行调试
 
 ```bash
-# 1. 进入 customer_support 的上级目录
+# 1. 进入 ai_coding 的上级目录
 cd 02-use-cases
 
 # 2. [可选] 创建配置配置 .env 文件，如果 步骤2 已经配置了环境变量，这里可以跳过
@@ -123,7 +123,7 @@ veadk web 默认会监听 8000 端口， 服务启动后，你可以在浏览器
 使用 agentkit 部署到火山引擎。
 
 ```bash
-# 1. 进入到 customer_support 目录
+# 1. 进入到 ai_coding 目录
 cd 02-use-cases/ai_coding
 
 # 2. 配置 agentkit

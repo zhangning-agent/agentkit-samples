@@ -18,8 +18,10 @@ import os
 import sys
 
 from agentkit.apps import AgentkitAgentServerApp, AgentkitSimpleApp
+from dotenv import load_dotenv
 from google.adk.planners import BuiltInPlanner
 from google.genai import types
+from tools import get_url_of_frontend_code_in_tos, upload_frontend_code_to_tos
 from veadk import Agent, Runner
 from veadk.memory import ShortTermMemory
 from veadk.tools.builtin_tools.run_code import run_code
@@ -31,8 +33,8 @@ current_dir = os.path.dirname(current_script_path)
 sys.path.append(current_dir)
 print(sys.path)
 
-from tools import get_url_of_frontend_code_in_tos, upload_frontend_code_to_tos
 
+load_dotenv()
 logger = logging.getLogger(__name__)
 logging.basicConfig(level="INFO")
 

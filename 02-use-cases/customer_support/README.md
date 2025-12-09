@@ -74,9 +74,6 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 cd 02-use-cases/customer_support
 
-# init uv project
-uv init --no-workspace
-
 # create virtual environment
 uv venv --python 3.12
 
@@ -110,9 +107,9 @@ export DATABASE_MEM0_API_KEY=<mem0_api_key>
 ```
 
 **环境变量说明:**
-- `DATABASE_TOS_BUCKET`: 用于自动知识库初始化所需 (如未设置 `DATABASE_VIKING_COLLECTION`)
+- `DATABASE_TOS_BUCKET`: 用于自动知识库初始化所需。若未设置 `DATABASE_VIKING_COLLECTION`，首次运行会将 `pre_build/knowledge` 自动上传至 TOS 并导入 Viking 向量库。
 - `DATABASE_VIKING_COLLECTION`: 预创建的知识库集合名称 (生产环境推荐)
-- 模型默认为 `deepseek-v3-1-terminus` (可在代码中配置)
+- 模型默认为 `deepseek-v3-1-terminus` ，如需更改可在代码中调整。
 
 ## 本地测试
 
@@ -143,7 +140,7 @@ veadk web
 **售后场景:**
 - "你好,我之前买的电视坏了"
 - "我的邮箱是 zhang.ming@example.com,电视序列号是 SN20240001"
-- "我需要帮助排查手机故障 - 无法开机"
+- "我需要帮助排查电视故障 - 无法开机"
 
 **导购咨询:**
 - "我想买一款客厅用的智能电视,主要用来打游戏,预算 3000 元以内"
@@ -176,33 +173,10 @@ agentkit config \
 agentkit launch
 ```
 
-2. 部署成功之后进入火山引擎 [AgentKit 控制台](https://console.volcengine.com/agentkit/region:agentkit+cn-beijing/runtime?pageSize=10&currentPage=1)，点击 Runtime 查看部署的智能体 `customer_support`详情，获取公网访问域名（如`https://xxxxx.apigateway-cn-beijing.volceapi.com`）和Api Key，然后通过一下API进行测试
-
-**创建 Session**
-   ```bash
-curl --location --request POST 'https://xxxxx.apigateway-cn-beijing.volceapi.com/apps/customer_support/users/u_123/sessions/s_124' \
---header 'Content-Type: application/json' \
---header 'Authorization: <your api key>' \
---data ''
+2. 调用智能体
+```bash
+agentkit invoke '{"prompt": "用国风画一个熊猫冒险的故事"}'
 ```
-  **发送消息**
-   ```bash
-curl --location 'https://xxxxx.apigateway-cn-beijing.volceapi.com/run_sse' \
---header 'Authorization: <your api key>' \
---header 'Content-Type: application/json' \
---data '{
-    "appName": "customer_support",
-    "userId": "u_123",
-    "sessionId": "s_124",
-    "newMessage": {
-        "role": "user",
-        "parts": [{
-        "text": "请帮我写一个斐波那契数列生成函数"
-        }]
-    },
-    "streaming": false
-}'
-   ```
 ## 📁 项目结构
 
 ```

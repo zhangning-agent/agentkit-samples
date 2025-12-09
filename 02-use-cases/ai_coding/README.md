@@ -43,11 +43,19 @@ AI 编程助手
 **1. 火山引擎访问凭证**
 
 1. 登录 [火山引擎控制台](https://console.volcengine.com)
-2. 进入"访问控制" → "密钥管理"
-3. 点击"创建密钥"生成 Access Key 和 Secret Key
-4. 为凭证配置 AgentKit 产品权限:
-   - 进入"访问控制" → "策略管理"
-   - 将`AgentKitFullAccess`策略授权给指定用户,确保用户的AK/SK具有完整的AgentKit权限
+2. 进入"访问控制" → "用户" -> 新建用户 或 搜索已有用户名 -> 点击用户名进入"用户详情" -> 进入"密钥" -> 新建密钥 或 复制已有的 AK/SK
+3. 为用户配置 AgentKit运行所依赖服务的访问权限:
+   - 在"用户详情"页面 -> 进入"权限" -> 点击"添加权限"，将以下策略授权给用户
+    - `AgentKitFullAccess`（AgentKit 全量权限）
+    - `APMPlusServerFullAccess`（APMPlus 全量权限）
+4. 为用户获取火山方舟模型 Agent API Key
+   - 搜索"火山方舟"产品，点击进入控制台
+   - 进入"API Key管理" -> 创建 或 复制已有的 API Key
+5. 开通模型预置推理接入点
+   - 搜索"火山方舟"产品，点击进入控制台
+   - 进入"开通管理" -> "语言模型" -> 找到相应模型 -> 点击"开通服务"
+   - 确认开通，等待服务生效（通常1-2分钟）
+   - 本案例使用的是`deepseek-v3-1-terminus`模型，因此需要开通`deepseek-v3-1-terminus`模型的预置推理接入点（您也可以根据实际需求开通其他模型的预置推理接入点，并在`agent.py`代码中指定使用的模型）
 
 **2. AgentKit 工具 ID**
 
@@ -68,9 +76,6 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 cd 02-use-cases/ai_coding
 
-# init uv project
-uv init --no-workspace
-
 # create virtual environment
 uv venv --python 3.12
 
@@ -86,10 +91,11 @@ uv pip install -r requirements.txt
 设置以下环境变量:
 
 ```bash
-export VOLCENGINE_ACCESS_KEY=AK
-export VOLCENGINE_SECRET_KEY=SK
+export VOLCENGINE_ACCESS_KEY={your_ak}
+export VOLCENGINE_SECRET_KEY={your_sk}
 export DATABASE_TOS_BUCKET=agentkit-platform-{{your_account_id}}
 export AGENTKIT_TOOL_ID={{your_tool_id}}
+export MODEL_AGENT_API_KEY={{your_model_agent_api_key}} # 从火山方舟获取，本地调试必传
 ```
 
 **环境变量说明:**
@@ -110,6 +116,7 @@ echo "VOLCENGINE_ACCESS_KEY=AK" >> .env
 echo "VOLCENGINE_SECRET_KEY=SK" >> .env
 echo "DATABASE_TOS_BUCKET=agentkit-platform-{{your_account_id}}" >> .env
 echo "AGENTKIT_TOOL_ID={{your_tool_id}}" >> .env
+echo "MODEL_AGENT_API_KEY={{your_model_agent_api_key}}" >> .env
 
 # 3. 启动 Web 界面
 veadk web
@@ -142,33 +149,11 @@ agentkit config \
 # 3. 部署到运行时
 agentkit launch
 ```
-2. 部署成功之后进入火山引擎 [AgentKit 控制台](https://console.volcengine.com/agentkit/region:agentkit+cn-beijing/runtime?pageSize=10&currentPage=1)，点击 Runtime 查看部署的智能体 `ai_coding`详情，获取公网访问域名（如`https://xxxxx.apigateway-cn-beijing.volceapi.com`）和Api Key，然后通过一下API进行测试
+2. 调用智能体
 
-**创建 Session**
-   ```bash
-curl --location --request POST 'https://xxxxx.apigateway-cn-beijing.volceapi.com/apps/ai_coding/users/u_123/sessions/s_124' \
---header 'Content-Type: application/json' \
---header 'Authorization: <your api key>' \
---data ''
+```bash
+agentkit invoke '{"prompt": "用 Python 创建一个二分查找实现"}'
 ```
-  **发送消息**
-   ```bash
-curl --location 'https://xxxxx.apigateway-cn-beijing.volceapi.com/run_sse' \
---header 'Authorization: <your api key>' \
---header 'Content-Type: application/json' \
---data '{
-    "appName": "ai_coding",
-    "userId": "u_123",
-    "sessionId": "s_124",
-    "newMessage": {
-        "role": "user",
-        "parts": [{
-        "text": "请帮我写一个斐波那契数列生成函数"
-        }]
-    },
-    "streaming": false
-}'
-   ```
 
 ## 📁 项目结构
 

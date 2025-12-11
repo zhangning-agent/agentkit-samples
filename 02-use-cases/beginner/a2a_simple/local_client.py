@@ -77,13 +77,8 @@ class A2ASimpleClient:
                 responses.append(response)
 
             # The response is a tuple - get the first element (Task object)
-            if (
-                responses
-                and isinstance(responses[0], tuple)
-                and len(responses[0]) > 0
-            ):
+            if responses and isinstance(responses[0], tuple) and len(responses[0]) > 0:
                 task = responses[0][0]  # First element of the tuple
-
                 # Extract text: task.artifacts[0].parts[0].root.text
                 try:
                     return task.artifacts[0].parts[0].root.text

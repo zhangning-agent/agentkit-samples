@@ -1,17 +1,19 @@
-from veadk import Agent, Runner
-from veadk.a2a.remote_ve_agent import RemoteVeAgent
+from a2a.types import AgentCapabilities, AgentCard, AgentProvider, AgentSkill
 from agentkit.apps import AgentkitA2aApp
 from google.adk.a2a.executor.a2a_agent_executor import A2aAgentExecutor
-from a2a.types import AgentCard, AgentProvider, AgentSkill, AgentCapabilities
+from veadk import Agent, Runner
+from veadk.a2a.remote_ve_agent import RemoteVeAgent
 
 remote_agent = RemoteVeAgent(
     name="a2a_agent",
     url="http://localhost:8001/",  # <--- url from remote agent service
 )
 
+
 def add(a: int, b: int) -> int:
     """Adds two numbers."""
     return a + b
+
 
 agent = Agent(
     name="a2a_sample_agent",
@@ -25,9 +27,11 @@ runner = Runner(agent=agent)
 
 a2aApp = AgentkitA2aApp()
 
+
 @a2aApp.agent_executor(runner=runner)
 class MyAgentExecutor(A2aAgentExecutor):
     pass
+
 
 if __name__ == "__main__":
     agent_card = AgentCard(
@@ -37,7 +41,9 @@ if __name__ == "__main__":
         defaultInputModes=["text"],
         defaultOutputModes=["text"],
         provider=AgentProvider(organization="agentkit", url=""),
-        skills=[AgentSkill(id="0", name="chat", description="Chat", tags=["chat"])],
+        skills=[
+            AgentSkill(id="0", name="chat", description="Chat", tags=["chat"])
+        ],
         url="http://0.0.0.0:8000",
         version="1.0.0",
     )

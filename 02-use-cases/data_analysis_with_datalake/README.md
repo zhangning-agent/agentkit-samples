@@ -64,21 +64,27 @@
 
 ### 1. 配置文件设置
 
-编辑 `data_analysis_with_code/agentkit_deploy/settings.txt` 文件，配置以下两个项：
+编辑 `data_analysis_with_code/agentkit_deploy/settings.txt` 文件，可选配置以下：
 
 ```
 MODEL_AGENT_API_KEY=your_api_key_here
-TOOL_LAS_API_KEY=your_api_key_here
+VOLCENGINE_ACCESS_KEY=your_ak
+VOLCENGINE_SECRET_KEY=your_sk
+
 ```
 
 ### 2. 项目部署
 
 ```bash
-cd agentkit_deploy
 uv python install 3.12
 uv venv -p 3.12 .venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
+
+# veadk运行
+veadk web
+
+# 在agentkit上运行
 agentkit config --tos_bucket <your bucket name>
 agentkit launch
 ```
@@ -86,6 +92,8 @@ agentkit launch
 ## 客户端连接
 
 ### 方式一：使用 Python 客户端
+
+当使用 agentkit 运行时可以通过 client 进行连接
 
 ```bash
 python client.py
@@ -104,6 +112,7 @@ streamlit run web/app.py
 3. **Q3: Ang Lee 评分超过 7 分的有哪些电影？**
 4. **Q4: Ang Lee 评分超过 7 分的电影中，有哪个电影海报中含有动物？**
 5. **Q5: Life of Pi 的电影海报，变成视频**
+6. **Q6: 帮我找一张海报里有红色机车的电影，并把它做成视频**
 
 ## 运行流程
 
@@ -122,18 +131,15 @@ streamlit run web/app.py
 
 ```
 data_analysis_with_code/
-├── agentkit_deploy/
-│   ├── .agentkit/
-│   ├── .dockerignore
-│   ├── agent.py
-│   ├── prompts.py
-│   ├── requirements.txt
-│   ├── settings.txt
-│   └── tools/
-│       ├── catalog_discovery.py
-│       ├── duckdb_sql_execution.py
-│       ├── lancedb_hybrid_execution.py
-│       └── video_generation.py
+├── agent.py
+├── prompts.py
+├── requirements.txt
+├── settings.txt
+└── tools/
+    ├── catalog_discovery.py
+    ├── duckdb_sql_execution.py
+    ├── lancedb_hybrid_execution.py
+    └── video_generation.py
 ├── client.py
 └── web/
     └── app.py

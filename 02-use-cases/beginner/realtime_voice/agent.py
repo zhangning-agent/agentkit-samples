@@ -4,26 +4,21 @@ from core_utils import (
     MODEL,
     VOICE_NAME,
     SEND_SAMPLE_RATE,
-    SYSTEM_INSTRUCTION
+    SYSTEM_INSTRUCTION,
 )
 import asyncio
 import json
 import base64
-import logging
-import os
 import traceback
 
 # Import Google ADK components
 from google.adk.agents import LiveRequestQueue
 
-from veadk.realtime import DoubaoRealtimeVoice
 from veadk import Agent, Runner
 from google.adk.agents.run_config import RunConfig, StreamingMode
 from google.adk.sessions.in_memory_session_service import InMemorySessionService
 from google.genai import types
 from dotenv import load_dotenv
-from google.adk.tools import google_search
-from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParameters
 
 load_dotenv()
 
@@ -44,7 +39,6 @@ class StreamingService(BaseStreamServer):
             name="voice_assistant_agent",
             model=MODEL,
             instruction=SYSTEM_INSTRUCTION,
-
         )
 
         # Create session service
@@ -99,33 +93,34 @@ class StreamingService(BaseStreamServer):
                 try:
                     data = json.loads(message)
                     if data.get("type") == "audio":
-                        audio_bytes = base64.b64decode(
-                            data.get("data", ""))
+                        audio_bytes = base64.b64decode(data.get("data", ""))
                         await audio_queue.put(audio_bytes)
                     elif data.get("type") == "video":
-                        video_bytes = base64.b64decode(
-                            data.get("data", ""))
+                        video_bytes = base64.b64decode(data.get("data", ""))
                         video_mode = data.get("mode", "webcam")
                         await video_queue.put({"data": video_bytes, "mode": video_mode})
                     elif data.get("type") == "end":
                         stream_logger.info(
-                            "Client has concluded data transmission for this turn.")
+                            "Client has concluded data transmission for this turn."
+                        )
                     elif data.get("type") == "text":
                         stream_logger.info(
-                            f"Received text from client: {data.get('data')}")
+                            f"Received text from client: {data.get('data')}"
+                        )
                 except json.JSONDecodeError:
-                    stream_logger.error(
-                        "Could not decode incoming JSON message.")
+                    stream_logger.error("Could not decode incoming JSON message.")
                 except Exception as e:
                     stream_logger.error(
-                        f"Exception while processing client message: {e}")
+                        f"Exception while processing client message: {e}"
+                    )
 
         async def send_audio_to_service():
             while True:
                 data = await audio_queue.get()
                 live_request_queue.send_realtime(
                     types.Blob(
-                        data=data, mime_type=f"audio/pcm;rate={SEND_SAMPLE_RATE}")
+                        data=data, mime_type=f"audio/pcm;rate={SEND_SAMPLE_RATE}"
+                    )
                 )
                 audio_queue.task_done()
 
@@ -135,7 +130,8 @@ class StreamingService(BaseStreamServer):
                 video_bytes = video_data.get("data")
                 video_mode = video_data.get("mode", "webcam")
                 stream_logger.info(
-                    f"Transmitting video frame from source: {video_mode}")
+                    f"Transmitting video frame from source: {video_mode}"
+                )
                 live_request_queue.send_realtime(
                     types.Blob(data=video_bytes, mime_type="image/jpeg")
                 )
@@ -153,46 +149,66 @@ class StreamingService(BaseStreamServer):
 
             # Process responses from the agent
             async for event in runner.run_live(
-                    user_id=user_id,
-                    session_id=session_id,
-                    live_request_queue=live_request_queue,
-                    run_config=run_config,
+                user_id=user_id,
+                session_id=session_id,
+                live_request_queue=live_request_queue,
+                run_config=run_config,
             ):
                 # Check for turn completion or interruption using string matching
                 # This is a fallback approach until a proper API exists
                 event_str = str(event)
 
                 # If there's a session resumption update, store the session ID
-                if hasattr(event, 'session_resumption_update') and event.session_resumption_update:
+                if (
+                    hasattr(event, "session_resumption_update")
+                    and event.session_resumption_update
+                ):
                     update = event.session_resumption_update
                     if update.resumable and update.new_handle:
                         current_session_id = update.new_handle
                         stream_logger.info(
-                            f"Established new session with handle: {current_session_id}")
+                            f"Established new session with handle: {current_session_id}"
+                        )
                         # Send session ID to client
-                        session_id_msg = json.dumps({
-                            "type": "session_id",
-                            "data": current_session_id
-                        })
+                        session_id_msg = json.dumps(
+                            {"type": "session_id", "data": current_session_id}
+                        )
                         await websocket.send(session_id_msg)
 
                 # Handle content
-                if event.content and hasattr(event.content, "parts") and event.content.parts:
+                if (
+                    event.content
+                    and hasattr(event.content, "parts")
+                    and event.content.parts
+                ):
                     for part in event.content.parts:
                         # Process audio content
                         if hasattr(part, "inline_data") and part.inline_data:
-                            b64_audio = base64.b64encode(
-                                part.inline_data.data).decode("utf-8")
+                            b64_audio = base64.b64encode(part.inline_data.data).decode(
+                                "utf-8"
+                            )
                             audio_buffer += part.inline_data.data
-                            await websocket.send(json.dumps({"type": "audio", "data": b64_audio}))
+                            await websocket.send(
+                                json.dumps({"type": "audio", "data": b64_audio})
+                            )
 
                         # Process text content
                         if hasattr(part, "text") and part.text:
                             # Check if this is user or model text based on content role
-                            if hasattr(event.content, "role") and event.content.role == "user":
+                            if (
+                                hasattr(event.content, "role")
+                                and event.content.role == "user"
+                            ):
                                 # User text should be sent to the client
                                 if "partial=True" in event_str:
-                                    await websocket.send(json.dumps({"type": "user_transcript", "data": part.text}))
+                                    await websocket.send(
+                                        json.dumps(
+                                            {
+                                                "type": "user_transcript",
+                                                "data": part.text,
+                                            }
+                                        )
+                                    )
                                 input_texts.append(part.text)
                             else:
                                 # From the logs, we can see the duplicated text issue happens because
@@ -202,37 +218,59 @@ class StreamingService(BaseStreamServer):
                                 # Check in the event string for the partial flag
                                 # Only process messages with "partial=True"
                                 if "partial=True" in event_str:
-                                    await websocket.send(json.dumps({"type": "text", "data": part.text}))
+                                    await websocket.send(
+                                        json.dumps({"type": "text", "data": part.text})
+                                    )
                                     output_texts.append(part.text)
                                 # Skip messages with "partial=None" to avoid duplication
 
                 # Check for interruption
                 if event.interrupted and not interrupted:
-                    stream_logger.warning(
-                        "User has interrupted the stream.")
-                    await websocket.send(json.dumps({
-                        "type": "interrupted",
-                        "data": "Response interrupted by user input"
-                    }))
+                    stream_logger.warning("User has interrupted the stream.")
+                    await websocket.send(
+                        json.dumps(
+                            {
+                                "type": "interrupted",
+                                "data": "Response interrupted by user input",
+                            }
+                        )
+                    )
                     interrupted = True
 
-                if event.input_transcription and hasattr(event.input_transcription, "text"):
+                if event.input_transcription and hasattr(
+                    event.input_transcription, "text"
+                ):
                     await websocket.send(
-                        json.dumps({"type": "user_transcript", "data": event.input_transcription.text}))
+                        json.dumps(
+                            {
+                                "type": "user_transcript",
+                                "data": event.input_transcription.text,
+                            }
+                        )
+                    )
 
-                if event.output_transcription and hasattr(event.output_transcription, "text"):
-                    await websocket.send(json.dumps({"type": "text", "data": event.output_transcription.text}))
+                if event.output_transcription and hasattr(
+                    event.output_transcription, "text"
+                ):
+                    await websocket.send(
+                        json.dumps(
+                            {"type": "text", "data": event.output_transcription.text}
+                        )
+                    )
 
                 # Check for turn completion
                 if event.turn_complete:
                     # Only send turn_complete if there was no interruption
                     if not interrupted:
-                        stream_logger.info(
-                            "The model has completed its turn.")
-                        await websocket.send(json.dumps({
-                            "type": "turn_complete",
-                            "session_id": current_session_id
-                        }))
+                        stream_logger.info("The model has completed its turn.")
+                        await websocket.send(
+                            json.dumps(
+                                {
+                                    "type": "turn_complete",
+                                    "session_id": current_session_id,
+                                }
+                            )
+                        )
 
                     # # Log collected transcriptions for debugging
                     # if input_texts:

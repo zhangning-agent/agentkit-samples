@@ -1,15 +1,16 @@
 import asyncio
 import json
-import base64
 import logging
 import os
 import websockets
 import traceback
 from websockets.exceptions import ConnectionClosed
 from dotenv import load_dotenv
+
 # Set up logging
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 stream_logger = logging.getLogger(__name__)
 
 
@@ -25,7 +26,7 @@ GOOGLE_GENAI_USE_VERTEXAI = "FALSE"
 
 # Audio sample rates for input/output
 RECEIVE_SAMPLE_RATE = 24000  # Rate of audio received from Gemini
-SEND_SAMPLE_RATE = 16000     # Rate of audio sent to Gemini
+SEND_SAMPLE_RATE = 16000  # Rate of audio sent to Gemini
 
 # System instruction used by both implementations
 SYSTEM_INSTRUCTION = """

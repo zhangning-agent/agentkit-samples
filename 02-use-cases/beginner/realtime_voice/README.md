@@ -32,7 +32,6 @@ NaviGo AI Agent
 | **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/pyproject.toml) - 依赖管理（uv 工具） |
 | **AgentKit 配置** | agentkit.yaml - 云端部署配置文件 |
 
-
 ### 代码特点
 
 **Agent 定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py#L43-L48)）：
@@ -148,7 +147,6 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ### 调试方法
 
-
 #### 方式一：命令行测试
 
 ```bash
@@ -201,9 +199,9 @@ agentkit launch
 # 在浏览器中打开 client/interface.html，客户端将自动连接到 WebSocket 服务器。
 ```
 
+## 示例提示词
 
 ## 效果展示
-
 
 ## 下一步
 

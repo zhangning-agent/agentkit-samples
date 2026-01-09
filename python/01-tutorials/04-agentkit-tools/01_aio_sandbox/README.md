@@ -1,4 +1,4 @@
-# Session 1 - 带有 Sandbox 工具的智能体
+# AIO (All-In-One) Sandbox Tool - 带有 Sandbox 工具的智能体
 
 ## 概述
 
@@ -21,7 +21,7 @@
 ## 目录结构说明
 
 ```bash
-sandbox_tool_sample/
+01_aio_sandbox/
 ├── agent.py               # 智能体核心逻辑，集成了 run_code 工具
 ├── client.py              # 本地测试客户端
 ├── agentkit.yaml          # AgentKit 部署配置文件
@@ -52,7 +52,7 @@ sandbox_tool_sample/
 ```bash
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
 source .venv/bin/activate
-cp .env.sample .env
+cp .env.example .env
 # 编辑 .env 文件，填入必要的 AGENTKIT_TOOL_ID 环境变量
 
 # 火山引擎访问凭证（必需）

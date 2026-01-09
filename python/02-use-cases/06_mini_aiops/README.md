@@ -42,7 +42,7 @@
 ```bash
 # 克隆代码仓库
 git clone https://github.com/volcengine/agentkit-samples.git
-cd agentkit-samples/02-use-cases/mini_aiops
+cd python/02-use-cases/06_mini_aiops
 
 # 安装项目依赖
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -67,7 +67,7 @@ veadk web
 ```
 
 1. 进入服务url `http://127.0.0.1:8000`
-2. 选择`mini_aiops`
+2. 选择`06_mini_aiops`
 3. 与Agent进行对话
 
 #### 5. 测试服务
@@ -77,7 +77,7 @@ veadk web
 ## 目录结构说明
 
 ```plaintext
-mini_aiops/
+06_mini_aiops/
 ├── agent.py        # AIOps Agent 定义
 ├── README.md       # 使用说明与功能介绍
 ├── requirements.txt# 依赖列表（基于 veadk-python）
@@ -90,8 +90,8 @@ mini_aiops/
 ## AgentKit 部署
 
 ```bash
-# 1. 进入`mini_aiops`
-cd mini_aiops
+# 1. 进入`06_mini_aiops`
+cd 06_mini_aiops
 # 2. 初始化配置
 agentkit config
 # 3. 根据说明进行配置

@@ -43,7 +43,7 @@ This is a data analysis framework built on LanceDB, using the IMDB dataset. It s
 ## Directory Structure
 
 ```bash
-data_analysis_with_code/
+05_data_analysis_with_datalake/
 ├── agent.py
 ├── prompts.py
 ├── requirements.txt
@@ -100,7 +100,7 @@ streamlit run web/app.py
 
 ### Configuration File Settings
 
-Edit the `data_analysis_with_datalake/settings.txt` file and optionally configure the following, or export these environment variables instead.
+Edit the `05_data_analysis_with_datalake/settings.txt` file and optionally configure the following, or export these environment variables instead.
 
 ```text
 MODEL_AGENT_API_KEY=your_api_key_here
@@ -117,7 +117,7 @@ source .venv/bin/activate
 uv pip install -r requirements.txt
 
 # CLI Run
-adk run data_analysis_with_datalake
+adk run 05_data_analysis_with_datalake
 # Prompt: what is data and list movies with score > 9 from director Francis Ford
 
 # veadk Run

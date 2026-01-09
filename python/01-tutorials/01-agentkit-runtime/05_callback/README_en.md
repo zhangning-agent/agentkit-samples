@@ -44,15 +44,15 @@ Return to User
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/agent.py) - The main Agent for configuring callbacks and guardrails |
-| **Callback Functions** | [callbacks/](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/callback/callbacks) - Implementations of the six callback functions |
-| **Tool Definition** | [tools/write_article.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/tools/write_article.py) - Article writing tool |
-| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/pyproject.toml) - Dependency management |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/agent.py) - The main Agent for configuring callbacks and guardrails |
+| **Callback Functions** | [callbacks/](https://github.com/volcengine/agentkit-samples/tree/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks) - Implementations of the six callback functions |
+| **Tool Definition** | [tools/write_article.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/tools/write_article.py) - Article writing tool |
+| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/pyproject.toml) - Dependency management |
 | **Short-term Memory** | Local backend for storing session context |
 
 ### Code Features
 
-**Agent Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/agent.py#L11-L22)):
+**Agent Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/agent.py#L11-L22)):
 
 ```python
 root_agent = Agent(
@@ -69,7 +69,7 @@ root_agent = Agent(
 )
 ```
 
-**Test Scenarios** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/agent.py#L37-L44)):
+**Test Scenarios** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/agent.py#L37-L44)):
 
 ```python
 # Scenario 1: Normal call, triggers tool and PII filtering
@@ -85,7 +85,7 @@ await runner.run(messages="Write an article about 'space exploration' with -100 
 ## Directory Structure
 
 ```bash
-callback/
+05_callback/
 ├── agent.py                    # Agent application entry point
 ├── callbacks/                  # Callback function implementations
 │   ├── __init__.py
@@ -132,7 +132,7 @@ brew install uv
 
 ```bash
 # Enter the project directory
-cd 02-use-cases/beginner/callback
+cd python/01-tutorials/01-agentkit-runtime/05_callback
 ```
 
 Use the `uv` tool to install the project dependencies:
@@ -165,7 +165,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # Go to the parent directory
-cd ..
+cd python/01-tutorials/01-agentkit-runtime
 
 # Start the VeADK Web interface
 veadk web --port 8080
@@ -218,7 +218,7 @@ uv run agent.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd callback
+cd python/01-tutorials/01-agentkit-runtime/05_callback
 
 # Configure deployment parameters
 agentkit config
@@ -240,13 +240,6 @@ uv run client.py
 
 ## Example Prompts
 
-After learning about Callback, you can explore:
-
-1. **[Hello World](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/hello_world/README.md)** - Learn about basic Agents
-2. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - Callbacks in multi-agent systems
-3. **[Travel Concierge](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/travel_concierge/README.md)** - Tool integration
-4. **[Video Generator](../../video_gen/README.md)** - Complex workflows
-
 ## Effect Demonstration
 
 ## Detailed Explanation of Callback Functions
@@ -262,7 +255,7 @@ After learning about Callback, you can explore:
 - Log the start of a request
 - Request rate limiting and authentication
 
-**Example** ([callbacks/before_agent_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/before_agent_callback.py)):
+**Example** ([callbacks/before_agent_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/before_agent_callback.py)):
 
 ```python
 def before_agent_callback(agent, callback_context):
@@ -286,7 +279,7 @@ def before_agent_callback(agent, callback_context):
 - Adjust parameters (temperature, max_tokens, etc.)
 - Pre-process request content
 
-**Example** ([callbacks/before_model_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/before_model_callback.py)):
+**Example** ([callbacks/before_model_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/before_model_callback.py)):
 
 ```python
 def before_model_callback(callback_context, llm_request):
@@ -309,7 +302,7 @@ def before_model_callback(callback_context, llm_request):
 - Extract structured information
 - Content moderation and rewriting
 
-**Example** ([callbacks/after_model_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/after_model_callback.py)):
+**Example** ([callbacks/after_model_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/after_model_callback.py)):
 
 ```python
 def after_model_callback(callback_context, llm_response):
@@ -331,7 +324,7 @@ def after_model_callback(callback_context, llm_response):
 - Permission checks
 - Lightweight parameter pre-processing
 
-**Example** ([callbacks/before_tool_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/before_tool_callback.py)):
+**Example** ([callbacks/before_tool_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/before_tool_callback.py)):
 
 ```python
 def before_tool_callback(tool_context):
@@ -356,7 +349,7 @@ def before_tool_callback(tool_context):
 - Persist results to storage
 - Error handling and retries
 
-**Example** ([callbacks/after_tool_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/after_tool_callback.py)):
+**Example** ([callbacks/after_tool_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/after_tool_callback.py)):
 
 ```python
 def after_tool_callback(tool_context, tool_result):
@@ -385,7 +378,7 @@ def after_tool_callback(tool_context, tool_result):
 - Generate execution reports
 - Performance metric statistics
 
-**Example** ([callbacks/after_agent_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/callback/callbacks/after_agent_callback.py)):
+**Example** ([callbacks/after_agent_callback.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/05_callback/callbacks/after_agent_callback.py)):
 
 ```python
 def after_agent_callback(agent, callback_context, result):

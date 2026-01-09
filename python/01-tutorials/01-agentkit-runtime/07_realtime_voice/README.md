@@ -27,14 +27,14 @@ NaviGo AI Agent
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py) - 主应用程序，定义 Agent 处理音频和文本转录 |
-| **测试客户端** | [interface.html](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/client/interface.html) - 基于 HTML5 实现的实时语音助手界面 |
-| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/pyproject.toml) - 依赖管理（uv 工具） |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py) - 主应用程序，定义 Agent 处理音频和文本转录 |
+| **测试客户端** | [interface.html](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/client/interface.html) - 基于 HTML5 实现的实时语音助手界面 |
+| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/pyproject.toml) - 依赖管理（uv 工具） |
 | **AgentKit 配置** | agentkit.yaml - 云端部署配置文件 |
 
 ### 代码特点
 
-**Agent 定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py#L38-L42)）：
+**Agent 定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py#L38-L42)）：
 
 ```python
 
@@ -47,7 +47,7 @@ agent = Agent(
 
 ```
 
-**语音配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py#L72-L84)）：
+**语音配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py#L72-L84)）：
 
 ```python
 # Create run config with audio settings
@@ -69,7 +69,7 @@ run_config = RunConfig(
 ## 目录结构说明
 
 ```bash
-realtime_voice/
+07_realtime_voice/
 ├── agent.py           # Agent 应用入口
 ├── core_utils.py      # 核心工具函数（如音频处理）
 ├── client/            # 测试客户端目录
@@ -114,7 +114,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/beginner/realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 ```
 
 使用 `uv` 工具来安装本项目依赖：
@@ -150,7 +150,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 #### 方式一：命令行测试
 
 ```bash
-cd realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 
 # 启动 Agent 服务
 uv run agent.py
@@ -186,7 +186,7 @@ uv run agent.py
 ### AgentKit 云上部署
 
 ```bash
-cd realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 
 # 配置部署参数
 agentkit config
@@ -202,8 +202,6 @@ agentkit launch
 ## 示例提示词
 
 ## 效果展示
-
-## 下一步
 
 ## 常见问题
 

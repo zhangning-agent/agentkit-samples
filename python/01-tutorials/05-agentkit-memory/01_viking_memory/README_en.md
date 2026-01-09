@@ -1,4 +1,4 @@
-# VikingMem - Long and Short-Term Memory Agent
+# viking memory - Long and Short-Term Memory Agent
 
 This is a memory management example built with Volcano Engine's VeADK and VikingDB, demonstrating how to implement short-term and long-term memory functions for an intelligent agent.
 
@@ -33,15 +33,15 @@ Agent + Runner
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/agent.py) - The main application, integrating short-term and long-term memory. |
-| **Test Script** | [local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py) - A complete demonstration of memory functions. |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/agent.py) - The main application, integrating short-term and long-term memory. |
+| **Test Script** | [local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py) - A complete demonstration of memory functions. |
 | **Short-term Memory** | `ShortTermMemory` - Session-level temporary storage. |
 | **Long-term Memory** | `LongTermMemory` - Persistent storage in VikingDB. |
-| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/pyproject.toml) - Dependency management (with `uv`). |
+| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/pyproject.toml) - Dependency management (with `uv`). |
 
 ### Code Highlights
 
-**Short-term Memory Configuration** ([local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py#L26-L34)):
+**Short-term Memory Configuration** ([local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py#L26-L34)):
 
 ```python
 # Short-term memory: effective only within the same session
@@ -55,7 +55,7 @@ runner1 = Runner(
 )
 ```
 
-**Long-term Memory Configuration** ([local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py#L56-L69)):
+**Long-term Memory Configuration** ([local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py#L56-L69)):
 
 ```python
 # Initialize long-term memory (Viking backend)
@@ -76,7 +76,7 @@ agent2 = Agent(
 ## Directory Structure
 
 ```text
-vikingmem/
+0_viking_memory/
 ├── agent.py           # Agent application entry point
 ├── local_test.py      # Complete memory function demonstration script
 ├── requirements.txt   # Python dependency list (required for agentkit deployment)
@@ -118,7 +118,7 @@ brew install uv
 
 ```bash
 # Navigate to the project directory
-cd 02-use-cases/beginner/vikingmem
+cd python/01-tutorials/05-agentkit-memory/01_viking_memory
 ```
 
 Use `uv` to install the project dependencies:
@@ -151,7 +151,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # Go to the parent directory
-cd ..
+cd python/01-tutorials/05-agentkit-memory
 
 # Start the VeADK Web interface
 veadk web
@@ -196,7 +196,7 @@ uv run local_test.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd vikingmem
+cd python/01-tutorials/05-agentkit-memory/01_viking_memory
 
 # Configure deployment parameters
 agentkit config \
@@ -320,15 +320,6 @@ agent_server_app = AgentkitAgentServerApp(
     short_term_memory=short_term_memory,
 )
 ```
-
-## Next Steps
-
-After completing the VikingMem example, you can explore more features:
-
-1. **[VikingDB](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/vikingdb/README.md)** - Build a document knowledge base.
-2. **[Episode Generation](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/episode_generation/README.md)** - Generate image and video content.
-3. **[Restaurant Ordering](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/restaurant_ordering/README.md)** - Build a complex business process Agent.
-4. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - Build a multi-agent collaboration system.
 
 ## FAQ
 

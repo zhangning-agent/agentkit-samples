@@ -1,4 +1,4 @@
-# VikingMem - 长短期记忆智能体
+# viking memory - 长短期记忆智能体
 
 基于火山引擎 VeADK 和 VikingDB 构建的记忆管理示例，展示如何实现智能体的短期记忆和长期记忆功能。
 
@@ -33,15 +33,15 @@ Agent + Runner
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/agent.py) - 主应用程序，集成短期和长期记忆 |
-| **测试脚本** | [local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py) - 完整的记忆功能演示 |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/agent.py) - 主应用程序，集成短期和长期记忆 |
+| **测试脚本** | [local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py) - 完整的记忆功能演示 |
 | **短期记忆** | ShortTermMemory - 会话级别的临时存储 |
 | **长期记忆** | LongTermMemory - VikingDB 持久化存储 |
-| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/pyproject.toml) - 依赖管理（uv 工具） |
+| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/pyproject.toml) - 依赖管理（uv 工具） |
 
 ### 代码特点
 
-**短期记忆配置**（[local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py#L26-L34)）：
+**短期记忆配置**（[local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py#L26-L34)）：
 
 ```python
 # 短期记忆：仅同session有效
@@ -55,7 +55,7 @@ runner1 = Runner(
 )
 ```
 
-**长期记忆配置**（[local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingmem/local_test.py#L56-L69)）：
+**长期记忆配置**（[local_test.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/05-agentkit-memory/01_viking_memory/local_test.py#L56-L69)）：
 
 ```python
 # 初始化长期记忆（Viking后端）
@@ -76,7 +76,7 @@ agent2 = Agent(
 ## 目录结构说明
 
 ```text
-vikingmem/
+01_viking_memory/
 ├── agent.py           # Agent 应用入口
 ├── local_test.py      # 完整的记忆功能演示脚本
 ├── requirements.txt   # Python 依赖列表（agentkit部署时需要指定依赖文件）
@@ -118,7 +118,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/beginner/vikingmem
+cd python/01-tutorials/05-agentkit-memory/01_viking_memory
 ```
 
 使用 `uv` 工具来安装本项目依赖：
@@ -151,7 +151,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # 进入上级目录
-cd ..
+cd python/01-tutorials/05-agentkit-memory
 
 # 启动 VeADK Web 界面
 veadk web
@@ -196,7 +196,7 @@ uv run local_test.py
 ### AgentKit 云上部署
 
 ```bash
-cd vikingmem
+cd python/01-tutorials/05-agentkit-memory/01_viking_memory
 
 # 配置部署参数
 agentkit config \
@@ -320,15 +320,6 @@ agent_server_app = AgentkitAgentServerApp(
     short_term_memory=short_term_memory,
 )
 ```
-
-## 下一步
-
-完成 VikingMem 示例后，可以探索更多功能：
-
-1. **[VikingDB](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/vikingdb/README.md)** - 构建文档知识库
-2. **[Episode Generation](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/episode_generation/README.md)** - 生成图片和视频内容
-3. **[Restaurant Ordering](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/restaurant_ordering/README.md)** - 构建复杂的业务流程 Agent
-4. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - 构建多智能体协作系统
 
 ## 常见问题
 

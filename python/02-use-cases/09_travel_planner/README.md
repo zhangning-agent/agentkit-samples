@@ -111,7 +111,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/travel_planner
+cd python/02-use-cases/09_travel_planner
 ```
 
 您可以通过 `pip` 工具来安装本项目依赖：
@@ -228,7 +228,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # 1. 进入项目目录
-cd 02-use-cases/travel_planner
+cd python/02-use-cases/09_travel_planner
 
 # 2. 配置 Agentkit 部署配置
 agentkit config \

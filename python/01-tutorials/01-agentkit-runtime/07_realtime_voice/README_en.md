@@ -27,14 +27,14 @@ NaviGo AI Agent
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py) - Main application, defines how the Agent handles audio and text transcription. |
-| **Test Client** | [interface.html](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/client/interface.html) - Real-time voice assistant interface implemented based on HTML5. |
-| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/pyproject.toml) - Dependency management (uv tool). |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py) - Main application, defines how the Agent handles audio and text transcription. |
+| **Test Client** | [interface.html](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/client/interface.html) - Real-time voice assistant interface implemented based on HTML5. |
+| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/pyproject.toml) - Dependency management (uv tool). |
 | **AgentKit Configuration** | agentkit.yaml - Cloud deployment configuration file. |
 
 ### Code Features
 
-**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py#L38-L42)):
+**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py#L38-L42)):
 
 ```python
 agent = Agent(
@@ -44,7 +44,7 @@ agent = Agent(
 )
 ```
 
-**Voice Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/realtime_voice/agent.py#L72-L84)):
+**Voice Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/07_realtime_voice/agent.py#L72-L84)):
 
 ```python
 # Create run config with audio settings
@@ -66,7 +66,7 @@ run_config = RunConfig(
 ## Directory Structure Description
 
 ```bash
-realtime_voice/
+07_realtime_voice/
 ├── agent.py           # Agent application entry point
 ├── core_utils.py      # Core utility functions (e.g., audio processing)
 ├── client/            # Test client directory
@@ -111,7 +111,7 @@ brew install uv
 
 ```bash
 # Enter the project directory
-cd 02-use-cases/beginner/realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 ```
 
 Use the `uv` tool to install the project dependencies:
@@ -146,7 +146,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 #### Method 1: Command-line Test
 
 ```bash
-cd realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 
 # Start the Agent service
 uv run agent.py
@@ -182,7 +182,7 @@ uv run agent.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd realtime_voice
+cd python/01-tutorials/01-agentkit-runtime/07_realtime_voice
 
 # Configure deployment parameters
 agentkit config
@@ -198,8 +198,6 @@ agentkit launch
 ## Example Prompts
 
 ## Effect Demonstration
-
-## Next Steps
 
 ## FAQ
 

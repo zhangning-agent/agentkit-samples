@@ -39,15 +39,15 @@ Restaurant Ordering Agent
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L82-L117) - order_agent, the ordering assistant |
-| **Test Script** | [main.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/main.py) - Complete ordering process demonstration |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L82-L117) - order_agent, the ordering assistant |
+| **Test Script** | [main.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/main.py) - Complete ordering process demonstration |
 | **Custom Tools** | add_to_order, summarize_order |
 | **Custom Plugin** | CountInvocationPlugin - Counts invocation times |
 | **Context Management** | EventsCompactionConfig + ContextFilterPlugin |
 
 ### Code Features
 
-**Asynchronous Tool Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L52-L79)):
+**Asynchronous Tool Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L52-L79)):
 
 ```python
 async def add_to_order(dish_name: str, tool_context: ToolContext = None) -> str:
@@ -68,7 +68,7 @@ async def summarize_order(tool_context: ToolContext = None) -> str:
     return summary
 ```
 
-**Agent Configuration and Parallel Calls** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L82-L117)):
+**Agent Configuration and Parallel Calls** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L82-L117)):
 
 ```python
 order_agent = Agent(
@@ -89,7 +89,7 @@ order_agent = Agent(
 )
 ```
 
-**Custom Plugin** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L120-L144)):
+**Custom Plugin** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L120-L144)):
 
 ```python
 class CountInvocationPlugin(BasePlugin):
@@ -113,7 +113,7 @@ class CountInvocationPlugin(BasePlugin):
         print(f"[Plugin] LLM request count: {self.llm_request_count}")
 ```
 
-**Context Management Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L151-L167)):
+**Context Management Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L151-L167)):
 
 ```python
 app = App(
@@ -135,7 +135,7 @@ app = App(
 ## Directory Structure
 
 ```bash
-restaurant_ordering/
+08_restaurant_ordering/
 ├── agent.py           # Agent application entry point (advanced features example)
 ├── main.py            # Complete ordering process demonstration script
 ├── requirements.txt   # Python dependency list (required for agentkit deployment)
@@ -171,7 +171,7 @@ brew install uv
 
 ```bash
 # Enter the project directory
-cd 02-use-cases/beginner/restaurant_ordering
+cd python/02-use-cases/08_restaurant_ordering
 ```
 
 Use the `uv` tool to install the project dependencies:
@@ -243,7 +243,7 @@ python agent.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd restaurant_ordering
+cd python/02-use-cases/08_restaurant_ordering
 
 # Configure deployment parameters
 agentkit config

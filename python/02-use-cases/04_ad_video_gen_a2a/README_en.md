@@ -52,7 +52,7 @@ Follow the steps below to deploy and run this project locally.
 ```bash
 # Clone the code repository
 git clone https://github.com/volcengine/agentkit-samples.git
-cd agentkit-samples/02-use-cases/multimedia
+cd python/02-use-cases/04_ad_video_gen_a2a
 
 # Install project dependencies
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -99,27 +99,27 @@ Please start each Agent service in order.
 # source .venv/bin/activate
 
 # Start market-agent
-cd app/market-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/market-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8000 --loop asyncio
 
 # Start director-agent
-cd app/director-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/director-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8001 --loop asyncio
 
 # Start evaluate-agent
-cd app/evaluate-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/evaluate-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8002 --loop asyncio
 
 # Start release-agent
-cd app/release-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/release-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8003 --loop asyncio
 
 # Finally, start multimedia-agent
-cd app/multimedia-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/multimedia-agent/src
 python -m uvicorn server:app --host 127.0.0.1 --port 8004 --loop asyncio
 
 # Start the short_link service
-cd app/short_link
+cd python/02-use-cases/04_ad_video_gen_a2a/app/short_link
 python -m uvicorn app:app --host 127.0.0.1 --port 8005 --loop asyncio
 ```
 

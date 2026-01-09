@@ -43,7 +43,7 @@
 ## 目录结构说明
 
 ```bash
-data_analysis_with_code/
+05_data_analysis_with_datalake/
 ├── agent.py
 ├── prompts.py
 ├── requirements.txt
@@ -100,7 +100,7 @@ streamlit run web/app.py
 
 ### 配置文件设置
 
-编辑 `data_analysis_with_datalake/settings.txt` 文件，可选配置以下 or export these env variable instead.
+编辑 `05_data_analysis_with_datalake/settings.txt` 文件，可选配置以下 or export these env variable instead.
 
 ```text
 MODEL_AGENT_API_KEY=your_api_key_here
@@ -117,7 +117,7 @@ source .venv/bin/activate
 uv pip install -r requirements.txt
 
 # cli run
-adk run data_analysis_with_datalake
+adk run 05_data_analysis_with_datalake
 #Prompt: what is data and list movies with score > 9 from director Francis Ford
 
 # veadk运行

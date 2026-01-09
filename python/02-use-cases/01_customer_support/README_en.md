@@ -44,7 +44,7 @@ Customer Support Agent (Main Router)
 ## Directory Structure
 
 ```text
-customer_support/
+01_customer_support/
 ├── agent.py                          # Main agent, includes sub-agent orchestration
 ├── tools/
 │   └── crm_mock.py                   # Mock CRM tool (customer, purchase, warranty, ticket)
@@ -107,7 +107,7 @@ customer_support/
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-cd 02-use-cases/customer_support
+cd python/02-use-cases/01_customer_support
 
 # create virtual environment
 uv venv --python 3.12
@@ -172,7 +172,7 @@ echo "DATABASE_TOS_BUCKET=agentkit-platform-{{your_account_id}}" >> .env
 veadk web
 ```
 
-The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `customer_support` agent, and start testing in the input panel.
+The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `01_customer_support` agent, and start testing in the input panel.
 
 ### Example Prompts
 
@@ -202,7 +202,7 @@ The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select
 
 ```bash
 # 1. Go to the project directory
-cd 02-use-cases/customer_support
+cd python/02-use-cases/01_customer_support
 
 # 2. Configure agentkit
 agentkit config \

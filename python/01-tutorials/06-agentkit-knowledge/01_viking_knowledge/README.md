@@ -1,4 +1,4 @@
-# VikingDB - 文档知识库智能问答
+# viking knowledge - 文档知识库智能问答
 
 基于火山引擎 VeADK 和 VikingDB 构建的 RAG（检索增强生成）示例，展示如何通过向量检索实现专业文档知识库的智能问答。
 
@@ -32,15 +32,15 @@ LLM 生成回答
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingdb/agent.py) - 主应用程序，集成 KnowledgeBase 和 VikingDB |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge/agent.py) - 主应用程序，集成 KnowledgeBase 和 VikingDB |
 | **知识库** | VikingDB 向量数据库，存储文档向量索引 |
 | **文档源** | tech.txt（技术文档）、products.txt（产品信息） |
-| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingdb/pyproject.toml) - 依赖管理（uv 工具） |
+| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge/pyproject.toml) - 依赖管理（uv 工具） |
 | **短期记忆** | 维护会话上下文 |
 
 ### 代码特点
 
-**知识库创建**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingdb/agent.py#L22-L29)）:
+**知识库创建**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge/agent.py#L22-L29)）:
 
 ```python
 # 准备知识源
@@ -54,7 +54,7 @@ kb = KnowledgeBase(backend="viking", app_name="test_app")
 kb.add_from_files(files=["/tmp/product_info.txt", "/tmp/service_policy.txt"])
 ```
 
-**Agent 配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/vikingdb/agent.py#L31-L36)）：
+**Agent 配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge/agent.py#L31-L36)）：
 
 ```python
 root_agent = Agent(
@@ -67,7 +67,7 @@ root_agent = Agent(
 ## 目录结构说明
 
 ```text
-vikingdb/
+01_viking_knowledge/
 ├── agent.py           # Agent 应用入口（集成 VikingDB）
 ├── requirements.txt   # Python 依赖列表
 ├── pyproject.toml     # 项目配置（uv 依赖管理）
@@ -113,7 +113,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/beginner/vikingdb
+cd python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge
 ```
 
 使用 `uv` 工具来安装本项目依赖：
@@ -146,7 +146,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # 进入上级目录
-cd ..
+cd python/01-tutorials/06-agentkit-knowledge
 
 # 启动 VeADK Web 界面
 veadk web
@@ -194,7 +194,8 @@ uv run agent.py
 ### AgentKit 云上部署
 
 ```bash
-# 进入到vikingdb目录
+# 进入到项目目录
+cd python/01-tutorials/06-agentkit-knowledge/01_viking_knowledge
 
 # 配置部署参数,DATABASE_TOS_BUCKET环境变量需要传入到Agent中，用来上传本地文件到TOS，进而将文件从TOS导入到知识库中
 agentkit config \
@@ -290,15 +291,6 @@ agent_server_app = AgentkitAgentServerApp(
     short_term_memory=short_term_memory,
 )
 ```
-
-## 下一步
-
-完成 VikingDB 示例后，可以探索更多功能：
-
-1. **[VikingMem](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/vikingmem/README.md)** - 使用 VikingDB 实现长期记忆
-2. **[Episode Generation](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/episode_generation/README.md)** - 生成图片和视频内容
-3. **[Restaurant Ordering](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/restaurant_ordering/README.md)** - 构建复杂的业务流程 Agent
-4. **[Travel Concierge](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/travel_concierge/README.md)** - 使用 Web 搜索工具规划旅行
 
 ## 常见问题
 

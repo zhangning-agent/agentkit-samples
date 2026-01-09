@@ -1,4 +1,4 @@
-# Content Safety Agent - An Agent with Content Moderation
+# Content Guardrails Agent - An Agent with Content Moderation
 
 This is a data analysis Agent built with Volcano Engine AgentKit that incorporates content safety auditing. It is designed to help users solve various data analysis problems while ensuring the safety and reliability of generated and interactive content.
 
@@ -39,7 +39,7 @@ Content Safety Agent
 ## Directory Structure
 
 ```text
-content_safety/
+11_content_guardrails/
 ├── agent.py            # Main agent application and configuration
 ├── client.py           # Test client (SSE streaming)
 ├── requirements.txt    # Python dependencies
@@ -76,7 +76,7 @@ brew install uv
 
 ```bash
 # Navigate to the project directory
-cd 02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 ```
 
 You can install the project dependencies using the `pip` tool:
@@ -134,7 +134,7 @@ The web interface provides a graphical chat environment for testing, with real-t
 Alternatively, you can use the command line for testing and debugging `agent.py`.
 
 ```bash
-cd agentkit-samples/02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 
 # Start the Agent service
 uv run agent.py
@@ -176,12 +176,12 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit Cloud Deployment
 
 ```bash
-cd agentkit-samples/02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 
 # Configure deployment parameters
 # Optional: If you don't add --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} and TOOL_LLM_SHIELD_APP_ID={{your_llm_shield_id}} in the agentkit config command, you can select the Sandbox Tool and Large Model Firewall in the AgentKit console under the agent's runtime, then publish.
 agentkit config \
---agent_name content_safety_agent \
+--agent_name content_guardrails_agent \
 --entry_point 'agent.py' \
 --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} \
 --runtime_envs TOOL_LLM_SHIELD_APP_ID={{your_llm_shield_id}} \

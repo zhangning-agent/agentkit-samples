@@ -1,4 +1,4 @@
-# Episode Generation - Scene Generation Agent
+# Image and Video Tools - Image and Video Generation Agent
 
 A creative content generation example based on Volcano Engine VeADK and multimedia generation tools, demonstrating how to generate image and video content through multi-agent collaboration.
 
@@ -33,15 +33,15 @@ Main Agent (eposide_generator)
 
 | Component | Description |
 | - | - |
-| **Main Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L37-L43) - eposide_generator, coordinates sub-Agents |
-| **Image Generation Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L30-L35) - image_generator, generates images |
-| **Video Generation Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L23-L28) - video_generator, generates videos |
+| **Main Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L37-L43) - eposide_generator, coordinates sub-Agents |
+| **Image Generation Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L30-L35) - image_generator, generates images |
+| **Video Generation Agent** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L23-L28) - video_generator, generates videos |
 | **Built-in Tools** | `image_generate`, `video_generate`, `web_search` |
-| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/pyproject.toml) - dependency management (uv tool) |
+| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/pyproject.toml) - dependency management (uv tool) |
 
 ### Code Features
 
-**Sub-Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L23-L35)):
+**Sub-Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L23-L35)):
 
 ```python
 video_generator = Agent(
@@ -59,7 +59,7 @@ image_generator = Agent(
 )
 ```
 
-**Main Agent Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L37-L43)):
+**Main Agent Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L37-L43)):
 
 ```python
 root_agent = Agent(
@@ -71,7 +71,7 @@ root_agent = Agent(
 )
 ```
 
-**Usage Example** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/episode_generation/agent.py#L47-L67)):
+**Usage Example** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/06_image_video_tools/agent.py#L47-L67)):
 
 ```python
 async def main(prompts: list[str]):
@@ -93,7 +93,7 @@ asyncio.run(main([
 ## Directory Structure Description
 
 ```bash
-episode_generation/
+06_image_video_tools/
 ├── agent.py                    # Agent application entry point
 ├── requirements.txt            # Python dependency list
 ├── pyproject.toml              # Project configuration (uv dependency management)
@@ -136,7 +136,7 @@ brew install uv
 
 ```bash
 # Enter the project directory
-cd 02-use-cases/beginner/episode_generation
+cd python/01-tutorials/01-agentkit-runtime/06_image_video_tools
 ```
 
 Use the `uv` tool to install the project dependencies:
@@ -169,7 +169,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # Go to the parent directory
-cd ..
+cd python/01-tutorials/01-agentkit-runtime
 
 # Start the VeADK Web interface
 veadk web
@@ -208,7 +208,7 @@ uv run agent.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd episode_generation
+cd python/01-tutorials/01-agentkit-runtime/06_image_video_tools
 
 # Configure deployment parameters
 agentkit config
@@ -316,15 +316,6 @@ from veadk.tools.builtin_tools.web_search import web_search
 3. **Delegate to sub-Agent**: Call the corresponding sub-Agent
 4. **Tool execution**: The sub-Agent calls the generation tool
 5. **Result return**: The generated image/video is returned to the user
-
-## Next Steps
-
-After completing the Episode Generation example, you can explore more features:
-
-1. **[Restaurant Ordering](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/restaurant_ordering/README.md)** - Build a complex business process Agent
-2. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - More complex multi-agent collaboration
-3. **[Travel Concierge](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/travel_concierge/README.md)** - Use the Web search tool to plan a trip
-4. **[Video Generator](../../video_gen/README.md)** - Advanced video generation example
 
 ## Frequently Asked Questions
 

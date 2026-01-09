@@ -1,10 +1,10 @@
-# Agent Skills - 使用 VeADK 和 AgentKit 构建具备 skills 能力的 Agent
+# Skills Sandbox - 使用 VeADK 和 AgentKit 构建具备 skills 能力的 Agent
 
 基于火山引擎 VeADK 和 AgentKit 构建具备 skills 能力的 Agent。
 
 ## 概述
 
-本示例是 AgentKit 的 "Agent Skills"，展示如何创建一个具备 skills 能力的 Agent。
+本示例是 AgentKit 的 "Skills Sandbox"，展示如何创建一个具备 skills 能力的 Agent。
 
 ## 核心功能
 
@@ -21,7 +21,7 @@
     ↓
 AgentKit 运行时
     ↓
-Agent Skills
+Skills Sandbox
     ├── VeADK Agent (对话引擎)
     ├── ShortTermMemory (会话记忆)
     └── 火山方舟模型 (LLM)
@@ -31,15 +31,15 @@ Agent Skills
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/agent.py) - 主应用程序，定义 Agent 和记忆组件 |
-| **测试客户端** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/client.py) - SSE 流式调用客户端 |
-| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/pyproject.toml) - 依赖管理（uv 工具） |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/agent.py) - 主应用程序，定义 Agent 和记忆组件 |
+| **测试客户端** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/client.py) - SSE 流式调用客户端 |
+| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/pyproject.toml) - 依赖管理（uv 工具） |
 | **AgentKit 配置** | agentkit.yaml - 云端部署配置文件 |
 | **短期记忆** | 使用本地后端存储会话上下文 |
 
 ### 代码特点
 
-**Agent 定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/agent.py#L11-L18)）：
+**Agent 定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/agent.py#L11-L15)）：
 
 ```python
 agent = Agent()
@@ -56,7 +56,7 @@ runner = Runner(
 ## 目录结构说明
 
 ```bash
-agent_skills/
+02_skills_sandbox/
 ├── agent.py           # Agent 运行一个 skills 任务
 ├── parallel.py        # 并发进行多个 skills 任务
 ├── client.py          # 测试客户端（SSE 流式调用）
@@ -96,7 +96,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 ```
 
 您可以通过 `pip` 工具来安装本项目依赖：
@@ -139,8 +139,8 @@ export AGENTKIT_TOOL_ID=<Your Tool ID>
 #### 单线程运行：使用 VeADK Web 调试界面，调试 agent.py
 
 ```bash
-# 进入 02-use-cases 目录
-cd agentkit-samples/02-use-cases
+# 进入项目目录
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # 启动 VeADK Web 界面
 veadk web --port 8080
@@ -153,7 +153,7 @@ Web 界面提供图形化对话测试环境，支持实时查看消息流和调�
 此外，还可以使用命令行测试，调试 agent.py。
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # 启动 Agent 服务
 uv run agent.py
@@ -167,7 +167,7 @@ uv run client.py
 #### 多线程并发：使用命令行测试，调试 parallel.py
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # 运行多线程并发程序
 uv run parallel.py
@@ -205,7 +205,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit 云上部署
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # 配置部署参数
 # optional：如果 agentkit config 中不添加 --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}}，可以在 AgentKit 控制台 智能体运行时 中，关键组件，选择 沙箱工具，并发布

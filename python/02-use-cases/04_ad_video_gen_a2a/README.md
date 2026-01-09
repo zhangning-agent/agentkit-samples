@@ -52,7 +52,7 @@
 ```bash
 # 克隆代码仓库
 git clone https://github.com/volcengine/agentkit-samples.git
-cd agentkit-samples/02-use-cases/multimedia
+cd python/02-use-cases/04_ad_video_gen_a2a
 
 # 安装项目依赖
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -99,27 +99,27 @@ playwright install
 # source .venv/bin/activate
 
 # 启动 market-agent
-cd app/market-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/market-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8000 --loop asyncio
 
 # 启动 director-agent
-cd app/director-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/director-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8001 --loop asyncio
 
 # 启动 evaluate-agent
-cd app/evaluate-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/evaluate-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8002 --loop asyncio
 
 # 启动 release-agent
-cd app/release-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/release-agent/src
 python -m uvicorn app:app --host 127.0.0.1 --port 8003 --loop asyncio
 
 # 最后启动 multimedia-agent
-cd app/multimedia-agent/src
+cd python/02-use-cases/04_ad_video_gen_a2a/app/multimedia-agent/src
 python -m uvicorn server:app --host 127.0.0.1 --port 8004 --loop asyncio
 
 # 启动 short_link 服务
-cd app/short_link
+cd python/02-use-cases/04_ad_video_gen_a2a/app/short_link
 python -m uvicorn app:app --host 127.0.0.1 --port 8005 --loop asyncio
 ```
 

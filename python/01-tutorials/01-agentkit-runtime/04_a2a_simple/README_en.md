@@ -32,7 +32,7 @@ Agent Service (agent.py:8000)
 ## Directory Structure
 
 ```bash
-a2a_simple/
+04_a2a_simple/
 ├── agent.py                 # Agent service (port 8000)
 ├── local_client.py          # A2A client implementation
 ├── tools/                   # Tool implementations
@@ -49,16 +49,16 @@ a2a_simple/
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/agent.py) - `hello_world_agent`, provides tool services (port 8000). |
-| **Local Client** | [local_client.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/local_client.py) - `A2ASimpleClient`, invokes the Agent service. |
-| **Tool: roll_die** | [tools/roll_die.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/tools/roll_die.py) - Rolls a die. |
-| **Tool: check_prime** | [tools/check_prime.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/tools/check_prime.py) - Checks for prime numbers. |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/agent.py) - `hello_world_agent`, provides tool services (port 8000). |
+| **Local Client** | [local_client.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/local_client.py) - `A2ASimpleClient`, invokes the Agent service. |
+| **Tool: roll_die** | [tools/roll_die.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/tools/roll_die.py) - Rolls a die. |
+| **Tool: check_prime** | [tools/check_prime.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/tools/check_prime.py) - Checks for prime numbers. |
 | **AgentCard** | Agent metadata and capability description. |
-| **Project Configuration** | [agentkit.yaml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/agentkit.yaml) - AgentKit deployment configuration. |
+| **Project Configuration** | [agentkit.yaml](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/agentkit.yaml) - AgentKit deployment configuration. |
 
 ### Code Highlights
 
-**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/agent.py#L9-L35)):
+**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/agent.py#L9-L35)):
 
 ```python
 root_agent = Agent(
@@ -90,7 +90,7 @@ root_agent = Agent(
 )
 ```
 
-**AgentCard Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/agent.py#L45-L55)):
+**AgentCard Configuration** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/agent.py#L45-L55)):
 
 ```python
 agent_card = AgentCard(
@@ -106,7 +106,7 @@ agent_card = AgentCard(
 )
 ```
 
-**Local Client Invocation** ([local_client.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/local_client.py#L28-L88)):
+**Local Client Invocation** ([local_client.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/local_client.py#L28-L88)):
 
 ```python
 async def create_task(self, agent_url: str, message: str) -> str:
@@ -125,7 +125,7 @@ async def create_task(self, agent_url: str, message: str) -> str:
         responses.append(response)
 ```
 
-**Tool State Management** ([tools/roll_die.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/a2a_simple/tools/roll_die.py#L6-L21)):
+**Tool State Management** ([tools/roll_die.py](https://github.com/volcengine/agentkit-samples/blob/main/01-tutorials/01-agentkit-runtime/04_a2a_simple/tools/roll_die.py#L6-L21)):
 
 ```python
 def roll_die(sides: int, tool_context: ToolContext) -> int:
@@ -168,7 +168,7 @@ brew install uv
 
 ```bash
 # Navigate to the project directory
-cd 02-use-cases/beginner/a2a_simple
+cd python/01-tutorials/01-agentkit-runtime/04_a2a_simple
 ```
 
 Use `uv` to install the project dependencies:
@@ -198,7 +198,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 
 ```bash
 # Go to the parent directory
-cd ..
+cd python/01-tutorials/01-agentkit-runtime
 
 # Start the VeADK Web interface
 veadk web
@@ -214,7 +214,7 @@ The web interface provides a graphical chat environment for testing and supports
 
 ```bash
 # Run in terminal window 1
-cd 02-use-cases/beginner/a2a_simple
+cd python/01-tutorials/01-agentkit-runtime/04_a2a_simple
 uv run agent.py
 
 # After the service starts, you can access the Agent Card
@@ -225,7 +225,7 @@ uv run agent.py
 
 ```bash
 # Run in terminal window 2
-cd 02-use-cases/beginner/a2a_simple
+cd python/01-tutorials/01-agentkit-runtime/04_a2a_simple
 python local_client.py
 ```
 
@@ -247,7 +247,7 @@ python local_client.py
 ### AgentKit Cloud Deployment
 
 ```bash
-cd 02-use-cases/beginner/a2a_simple
+cd python/01-tutorials/01-agentkit-runtime/04_a2a_simple
 
 # Configure deployment parameters (Important: agent_type must be a2a)
 agentkit config
@@ -391,14 +391,6 @@ class MyAgentExecutor(A2aAgentExecutor):
 
 a2a_app.run(agent_card=agent_card, host="0.0.0.0", port=8000)
 ```
-
-## Next Steps
-
-After completing the A2A Simple example, you can explore more features:
-
-1. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - Build a multi-agent collaboration system.
-2. **[Restaurant Ordering](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/restaurant_ordering/README.md)** - Advanced Agent features.
-3. **[Travel Concierge](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/travel_concierge/README.md)** - Use the Web search tool.
 
 ## FAQ
 

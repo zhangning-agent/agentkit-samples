@@ -39,15 +39,15 @@ Restaurant Ordering Agent
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L82-L117) - order_agent，点餐助手 |
-| **测试脚本** | [main.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/main.py) - 完整的点餐流程演示 |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L82-L117) - order_agent，点餐助手 |
+| **测试脚本** | [main.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/main.py) - 完整的点餐流程演示 |
 | **自定义工具** | add_to_order, summarize_order |
 | **自定义插件** | CountInvocationPlugin - 统计调用次数 |
 | **上下文管理** | EventsCompactionConfig + ContextFilterPlugin |
 
 ### 代码特点
 
-**异步工具定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L52-L79)）：
+**异步工具定义**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L52-L79)）：
 
 ```python
 async def add_to_order(dish_name: str, tool_context: ToolContext = None) -> str:
@@ -68,7 +68,7 @@ async def summarize_order(tool_context: ToolContext = None) -> str:
     return summary
 ```
 
-**Agent 配置与并行调用**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L82-L117)）：
+**Agent 配置与并行调用**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L82-L117)）：
 
 ```python
 order_agent = Agent(
@@ -89,7 +89,7 @@ order_agent = Agent(
 )
 ```
 
-**自定义插件**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L120-L144)）：
+**自定义插件**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L120-L144)）：
 
 ```python
 class CountInvocationPlugin(BasePlugin):
@@ -113,7 +113,7 @@ class CountInvocationPlugin(BasePlugin):
         print(f"[Plugin] LLM request count: {self.llm_request_count}")
 ```
 
-**上下文管理配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/restaurant_ordering/agent.py#L151-L167)）：
+**上下文管理配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/02-use-cases/08_restaurant_ordering/agent.py#L151-L167)）：
 
 ```python
 app = App(
@@ -135,7 +135,7 @@ app = App(
 ## 目录结构说明
 
 ```bash
-restaurant_ordering/
+08_restaurant_ordering/
 ├── agent.py           # Agent 应用入口（高级特性示例）
 ├── main.py            # 完整的点餐流程演示脚本
 ├── requirements.txt   # Python 依赖列表 （agentkit部署时需要指定依赖文件)
@@ -171,7 +171,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/beginner/restaurant_ordering
+cd python/02-use-cases/08_restaurant_ordering
 ```
 
 使用 `uv` 工具来安装本项目依赖：
@@ -243,7 +243,7 @@ python agent.py
 ### AgentKit 云上部署
 
 ```bash
-cd restaurant_ordering
+cd python/02-use-cases/08_restaurant_ordering
 
 # 配置部署参数
 agentkit config

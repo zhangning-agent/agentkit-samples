@@ -27,7 +27,7 @@ Stock Analysis Agent
 ## 目录结构说明
 
 ```bash
-stock_analysis/
+07_stock_analysis/
 ├── agent.py           # Agent
 ├── client.py          # 测试客户端（SSE 流式调用）
 ├── requirements.txt   # Python 依赖列表 （agentkit部署时需要指定依赖文件)
@@ -74,7 +74,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 ```
 
 您可以通过 `pip` 工具来安装本项目依赖：
@@ -131,7 +131,7 @@ Web 界面提供图形化对话测试环境，支持实时查看消息流和调�
 此外，还可以使用命令行测试，调试 agent.py。
 
 ```bash
-cd agentkit-samples/02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 
 # 启动 Agent 服务
 uv run agent.py
@@ -176,7 +176,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit 云上部署
 
 ```bash
-cd agentkit-samples/02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 
 # 配置部署参数
 # optional：如果 agentkit config 中不添加 --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}}，可以在 AgentKit 控制台 智能体运行时 中，关键组件，选择 沙箱工具，并发布

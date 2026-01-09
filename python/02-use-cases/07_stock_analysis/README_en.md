@@ -27,7 +27,7 @@ Stock Analysis Agent
 ## Directory Structure Description
 
 ```bash
-stock_analysis/
+07_stock_analysis/
 ├── agent.py           # Agent
 ├── client.py          # Test client (SSE streaming call)
 ├── requirements.txt   # Python dependency list (dependency file needs to be specified during agentkit deployment)
@@ -74,7 +74,7 @@ brew install uv
 
 ```bash
 # Enter the project directory
-cd 02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 ```
 
 You can use the `pip` tool to install the project dependencies:
@@ -131,7 +131,7 @@ The Web interface provides a graphical dialogue testing environment, supporting 
 In addition, you can also use the command line to test and debug agent.py.
 
 ```bash
-cd agentkit-samples/02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 
 # Start the Agent service
 uv run agent.py
@@ -176,7 +176,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit Cloud Deployment
 
 ```bash
-cd agentkit-samples/02-use-cases/stock_analysis
+cd python/02-use-cases/07_stock_analysis
 
 # Configure deployment parameters
 # optional: If you do not add --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} in agentkit config, you can select the Sandbox Tool in the AgentKit console's intelligent agent runtime, key components, and publish

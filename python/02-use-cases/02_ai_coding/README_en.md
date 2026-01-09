@@ -56,7 +56,7 @@ Built-in OpenTelemetry tracing and APMPlus monitoring to support production envi
 ## Directory Structure
 
 ```text
-ai_coding/
+02_ai_coding/
 ├── agent.py              # Main agent application and configuration
 ├── tools.py              # Tool functions (TOS upload, URL generation)
 ├── requirements.txt      # Python dependencies
@@ -110,7 +110,7 @@ ai_coding/
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-cd 02-use-cases/ai_coding
+cd python/02-use-cases/02_ai_coding
 
 # create virtual environment
 uv venv --python 3.12
@@ -167,7 +167,7 @@ echo "MODEL_AGENT_API_KEY={{your_model_agent_api_key}}" >> .env
 veadk web
 ```
 
-The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `ai_coding` agent, and start testing.
+The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `02_ai_coding` agent, and start testing.
 
 ### Example Prompts
 
@@ -181,7 +181,7 @@ The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select
 
 ```bash
 # 1. Go to the project directory
-cd 02-use-cases/ai_coding
+cd python/02-use-cases/02_ai_coding
 
 # 2. Configure agentkit
 agentkit config \

@@ -131,7 +131,7 @@ cd 02-use-cases
 veadk web
 ```
 
-服务默认运行在 8000 端口。访问 `http://127.0.0.1:8000`,选择 `inspection_assistant` 智能体,在输入面板中开始测试。
+服务默认运行在 8000 端口。访问 `http://127.0.0.1:8000`,选择 `10_store_inspection_assistant` 智能体,在输入面板中开始测试。
 
 ### 示例提示词
 
@@ -148,7 +148,7 @@ veadk web
 
 ```bash
 # 1. 进入项目目录
-cd 02-use-cases/inspection_assistant
+cd python/02-use-cases/10_store_inspection_assistant
 
 # 2. 配置 agentkit
 agentkit config \

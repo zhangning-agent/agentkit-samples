@@ -1,4 +1,4 @@
-# Content Safety Agent - 具备内容安全审核的 Agent
+# Content Guardrails Agent - 具备内容安全审核的 Agent
 
 这是一个基于火山引擎AgentKit构建的具备内容安全审核的数据分析 Agent，在确保生成与交互内容安全可靠的前提下，专门用于帮助用户解决各类数据分析问题。
 
@@ -39,7 +39,7 @@ Content Safety Agent
 ## 目录结构说明
 
 ```text
-content_safety/
+11_content_guardrails/
 ├── agent.py            # 主智能体应用及配置
 ├── client.py           # 测试客户端（SSE 流式调用）
 ├── requirements.txt    # Python 依赖
@@ -76,7 +76,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 ```
 
 您可以通过 `pip` 工具来安装本项目依赖：
@@ -134,7 +134,7 @@ Web 界面提供图形化对话测试环境，支持实时查看消息流和调�
 此外，还可以使用命令行测试，调试 agent.py。
 
 ```bash
-cd agentkit-samples/02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 
 # 启动 Agent 服务
 uv run agent.py
@@ -176,12 +176,12 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit 云上部署
 
 ```bash
-cd agentkit-samples/02-use-cases/content_safety
+cd python/02-use-cases/11_content_guardrails
 
 # 配置部署参数
 # optional：如果 agentkit config 中不添加 --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} 和 TOOL_LLM_SHIELD_APP_ID={{your_llm_shield_id}}，可以在 AgentKit 控制台 智能体运行时 中，关键组件，选择 沙箱工具和大模型防火墙，并发布
 agentkit config \
---agent_name content_safety_agent \
+--agent_name content_guardrails_agent \
 --entry_point 'agent.py' \
 --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} \
 --runtime_envs TOOL_LLM_SHIELD_APP_ID={{your_llm_shield_id}} \

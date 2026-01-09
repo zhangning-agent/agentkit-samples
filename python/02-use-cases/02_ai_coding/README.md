@@ -56,7 +56,7 @@ AI 编程助手
 ## 目录结构说明
 
 ```text
-ai_coding/
+02_ai_coding/
 ├── agent.py              # 主智能体应用及配置
 ├── tools.py              # 工具函数 (TOS 上传、URL 生成)
 ├── requirements.txt      # Python 依赖
@@ -110,7 +110,7 @@ ai_coding/
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-cd 02-use-cases/ai_coding
+cd python/02-use-cases/02_ai_coding
 
 # create virtual environment
 uv venv --python 3.12
@@ -160,7 +160,7 @@ cd 02-use-cases
 veadk web
 ```
 
-服务默认运行在 8000 端口。访问 `http://127.0.0.1:8000`,选择 `ai_coding` 智能体,开始测试。
+服务默认运行在 8000 端口。访问 `http://127.0.0.1:8000`,选择 `02_ai_coding` 智能体,开始测试。
 
 ### 示例提示词
 
@@ -174,7 +174,7 @@ veadk web
 
 ```bash
 # 1. 进入项目目录
-cd 02-use-cases/ai_coding
+cd python/02-use-cases/02_ai_coding
 
 # 2. 配置 agentkit
 agentkit config \

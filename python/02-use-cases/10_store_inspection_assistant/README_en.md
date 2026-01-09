@@ -129,7 +129,7 @@ echo "DATABASE_TOS_BUCKET=agentkit-platform-{{your_account_id}}" >> .env
 veadk web
 ```
 
-The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `inspection_assistant` agent, and start testing in the input panel.
+The service runs on port 8000 by default. Access `http://127.0.0.1:8000`, select the `10_store_inspection_assistant` agent, and start testing in the input panel.
 
 ### Example Prompts
 
@@ -146,7 +146,7 @@ Check the worker's attire in the store, image url: https://agentkit-demo.tos-cn-
 
 ```bash
 # 1. Go to the project directory
-cd 02-use-cases/inspection_assistant
+cd python/02-use-cases/10_store_inspection_assistant
 
 # 2. Configure agentkit
 agentkit config \

@@ -35,15 +35,15 @@ TOS MCP Agent
 
 | 组件 | 描述 |
 | - | - |
-| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/mcp_simple/agent.py) - 集成 MCP 工具的 Agent 应用 |
-| **测试客户端** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/mcp_simple/client.py) - SSE 流式调用客户端 |
-| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/mcp_simple/pyproject.toml) - 依赖管理（uv 工具） |
+| **Agent 服务** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/03_mcp_simple/agent.py) - 集成 MCP 工具的 Agent 应用 |
+| **测试客户端** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/03_mcp_simple/client.py) - SSE 流式调用客户端 |
+| **项目配置** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/03_mcp_simple/pyproject.toml) - 依赖管理（uv 工具） |
 | **MCP 连接** | `MCPToolset` - 通过 HTTP 连接火山 MCP Server |
 | **短期记忆** | 本地后端存储会话上下文 |
 
 ### 代码特点
 
-**MCP 工具集成**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/mcp_simple/agent.py#L8-L15)）：
+**MCP 工具集成**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/03_mcp_simple/agent.py#L8-L15)）：
 
 ```python
 url = os.getenv("TOOL_TOS_URL")
@@ -56,7 +56,7 @@ tos_mcp_runner = MCPToolset(
 )
 ```
 
-**Agent 配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/mcp_simple/agent.py#L21-L26)）：
+**Agent 配置**（[agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/01-agentkit-runtime/03_mcp_simple/agent.py#L21-L26)）：
 
 ```python
 root_agent = Agent(
@@ -69,7 +69,7 @@ root_agent = Agent(
 ## 目录结构说明
 
 ```bash
-mcp_simple/
+03_mcp_simple/
 ├── agent.py           # Agent 应用入口（含 MCP 集成）
 ├── client.py          # 测试客户端（SSE 流式调用）
 ├── requirements.txt   # Python 依赖列表 （agentkit部署时需要指定依赖文件)
@@ -115,7 +115,7 @@ brew install uv
 
 ```bash
 # 进入项目目录
-cd 02-use-cases/beginner/mcp_simple
+cd python/01-tutorials/01-agentkit-runtime/03_mcp_simple
 ```
 
 使用 `uv` 工具来安装本项目依赖：
@@ -175,7 +175,7 @@ data: {"event":"on_llm_chunk","data":{"content":"您当前账号下有以下存�
 
 ```bash
 # 进入上级目录
-cd ..
+cd python/01-tutorials/01-agentkit-runtime
 
 # 启动 VeADK Web 界面
 veadk web
@@ -209,7 +209,7 @@ Web 界面可以实时查看 MCP 工具调用过程和返回结果。
 ### AgentKit 云上部署
 
 ```bash
-cd mcp_simple
+cd python/01-tutorials/01-agentkit-runtime/03_mcp_simple
 
 # 配置部署参数（需要设置 TOOL_TOS_URL 环境变量）
 agentkit config
@@ -337,15 +337,6 @@ agent = Agent(tools=[tos_mcp_runner])
 - **对象属性**：head_object, copy_object
 - **访问控制**：get_object_acl, set_object_acl
 - **更多操作**：参考 [TOS API 文档](https://www.volcengine.com/docs/tos)
-
-## 下一步
-
-完成 MCP 集成后，可以探索：
-
-1. **自定义 MCP Server** - 将自己的服务封装为 MCP Server
-2. **[Multi Agents](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/multi_agents/README.md)** - 在多智能体系统中使用 MCP 工具
-3. **[Travel Concierge](https://github.com/volcengine/agentkit-samples/tree/main/02-use-cases/beginner/travel_concierge/README.md)** - 结合其他工具类型
-4. **[Video Generator](../../video_gen/README.md)** - 复杂工具链编排
 
 ## 常见问题
 

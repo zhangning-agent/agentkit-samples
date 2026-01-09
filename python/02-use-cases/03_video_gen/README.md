@@ -97,7 +97,7 @@ AgentKit 运行时
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-cd 02-use-cases/video_gen
+cd python/02-use-cases/03_video_gen
 
 # create virtual environment
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -191,7 +191,7 @@ cd 02-use-cases
 veadk web
 ```
 
-在浏览器中访问 `http://localhost:8000`,选择 `video_gen` 智能体,输入提示词并点击"Send"。
+在浏览器中访问 `http://localhost:8000`,选择 `03_video_gen` 智能体,输入提示词并点击"Send"。
 
 ### 示例提示词
 
@@ -215,9 +215,9 @@ veadk web
 
 步骤1: 进入项目目录
 
-   ```bash
-   cd 02-use-cases/video_gen
-   ```
+```bash
+cd python/02-use-cases/03_video_gen
+```
 
 步骤2: 配置 AgentKit**
 
@@ -306,7 +306,7 @@ curl --location 'https://xxxxx.apigateway-cn-beijing.volceapi.com/run_sse' \
 ## 目录结构说明
 
 ```bash
-video_gen/
+03_video_gen/
 ├── agent.py              # Agent 入口,包含 MCP 集成
 ├── agent.yaml            # Agent 配置 (模型、指令、工具)
 ├── tool/                 # 自定义工具实现

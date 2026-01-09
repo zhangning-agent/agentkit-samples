@@ -1,10 +1,10 @@
-# Agent Skills - Building Agents with Skills using VeADK and AgentKit
+# Skills Sandbox - Building Agents with Skills using VeADK and AgentKit
 
 Build Agents with skills capabilities based on Volcano Engine's VeADK and AgentKit.
 
 ## Overview
 
-This example is AgentKit's "Agent Skills," demonstrating how to create an Agent with skills capabilities.
+This example is AgentKit's "Skills Sandbox," demonstrating how to create an Agent with skills capabilities.
 
 ## Core Features
 
@@ -31,15 +31,15 @@ Agent Skills
 
 | Component | Description |
 | - | - |
-| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/agent.py) - Main application, defines the Agent and memory components. |
-| **Test Client** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/client.py) - SSE streaming invocation client. |
-| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/pyproject.toml) - Dependency management (uv tool). |
+| **Agent Service** | [agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/agent.py) - Main application, defines the Agent and memory components. |
+| **Test Client** | [client.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/client.py) - SSE streaming invocation client. |
+| **Project Configuration** | [pyproject.toml](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/pyproject.toml) - Dependency management (uv tool). |
 | **AgentKit Configuration** | agentkit.yaml - Cloud deployment configuration file. |
 | **Short-term Memory** | Uses a local backend to store session context. |
 
 ### Code Features
 
-**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/02-use-cases/beginner/hello_world/agent.py#L11-L18)):
+**Agent Definition** ([agent.py](https://github.com/volcengine/agentkit-samples/blob/main/python/01-tutorials/04-agentkit-tools/02_skills_sandbox/agent.py#L11-L15)):
 
 ```python
 agent = Agent()
@@ -56,7 +56,7 @@ runner = Runner(
 ## Directory Structure
 
 ```bash
-agent_skills/
+skills_sandbox/
 ├── agent.py           # Agent runs a single skill task
 ├── parallel.py        # Concurrently run multiple skill tasks
 ├── client.py          # Test client (SSE streaming invocation)
@@ -96,7 +96,7 @@ brew install uv
 
 ```bash
 # Navigate to the project directory
-cd 02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 ```
 
 You can install the project dependencies using `pip`:
@@ -139,8 +139,8 @@ export AGENTKIT_TOOL_ID=<Your Tool ID>
 #### Single-threaded execution: Use the VeADK Web UI to debug agent.py
 
 ```bash
-# Navigate to the 02-use-cases directory
-cd agentkit-samples/02-use-cases
+# Navigate to the project directory
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # Start the VeADK Web UI
 veadk web --port 8080
@@ -153,7 +153,7 @@ The web interface provides a graphical chat environment for testing, with real-t
 Alternatively, you can use the command line for testing and debugging `agent.py`.
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # Start the Agent service
 uv run agent.py
@@ -167,7 +167,7 @@ uv run client.py
 #### Multi-threaded concurrency: Use the command line to debug parallel.py
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # Run the multi-threaded concurrent program
 uv run parallel.py
@@ -205,7 +205,7 @@ export VOLCENGINE_SECRET_KEY=<Your Secret Key>
 ### AgentKit Cloud Deployment
 
 ```bash
-cd agentkit-samples/02-use-cases/agent_skills
+cd python/01-tutorials/04-agentkit-tools/02_skills_sandbox
 
 # Configure deployment parameters
 # Optional: If you don't add --runtime_envs AGENTKIT_TOOL_ID={{your_tool_id}} in the agentkit config command, you can select the Sandbox Tool in the AgentKit console under the agent's runtime, then publish.

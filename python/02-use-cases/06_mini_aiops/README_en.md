@@ -42,7 +42,7 @@ Follow these steps to deploy and run this project locally.
 ```bash
 # Clone the code repository
 git clone https://github.com/volcengine/agentkit-samples.git
-cd agentkit-samples/02-use-cases/mini_aiops
+cd python/02-use-cases/06_mini_aiops
 
 # Install project dependencies
 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -66,9 +66,9 @@ export VOLCENGINE_SECRET_KEY="xxxxxx"
 veadk web
 ```
 
-1.  Go to the service URL `http://127.0.0.1:8000`.
-2.  Select `mini_aiops`.
-3.  Chat with the Agent.
+1. Go to the service URL `http://127.0.0.1:8000`.
+2. Select `06_mini_aiops`.
+3. Chat with the Agent.
 
 #### 5. Test the Service
 
@@ -77,7 +77,7 @@ veadk web
 ## Directory Structure
 
 ```plaintext
-mini_aiops/
+06_mini_aiops/
 ├── agent.py        # AIOps Agent definition
 ├── README.md       # Instructions and feature introduction
 ├── requirements.txt# Dependency list (based on veadk-python)
@@ -90,8 +90,8 @@ mini_aiops/
 ## AgentKit Deployment
 
 ```bash
-# 1. Enter the `mini_aiops` directory
-cd mini_aiops
+# 1. Enter the `06_mini_aiops` directory
+cd 06_mini_aiops
 # 2. Initialize configuration
 agentkit config
 # 3. Configure according to the instructions

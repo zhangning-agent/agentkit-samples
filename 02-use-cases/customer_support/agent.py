@@ -11,16 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-from tools.crm_mock import (
-    create_service_record,
-    delete_service_record,
-    get_customer_info,
-    get_customer_purchases,
-    get_service_records,
-    query_warranty,
-    update_service_record,
-)
 import datetime
 import logging
 import os
@@ -39,9 +29,17 @@ from veadk.memory import LongTermMemory, ShortTermMemory
 
 # 当前目录
 sys.path.append(str(Path(__file__).resolve().parent))
-# 上层目录
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
+from tools.crm_mock import (
+    create_service_record,
+    delete_service_record,
+    get_customer_info,
+    get_customer_purchases,
+    get_service_records,
+    query_warranty,
+    update_service_record,
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

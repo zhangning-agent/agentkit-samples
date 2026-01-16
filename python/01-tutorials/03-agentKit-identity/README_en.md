@@ -37,9 +37,9 @@ Agent Identity governs the "user → application → Agent → resource" link se
 
 | Experiment | Description | Directory |
 | --- | --- | --- |
-| **Experiment 1: User Pool Authentication** | Use a user pool to control agent access (Inbound authentication) | [01_userpool_inbound](./01_userpool_inbound/) |
-| **Experiment 2: Feishu Federated Login** | Use a Feishu account as the enterprise identity source (IdP integration) | [02_feishu_idp](./02_feishu_idp/) |
-| **Experiment 3: Feishu Document Access** | Configure the Agent to access Feishu documents on behalf of the user | [03_feishu_outbound](./03_feishu_outbound/) |
+| **Experiment 1: User Pool Authentication** | Use a user pool to control agent access (Inbound authentication) | [userpool_inbound](./userpool_inbound/) |
+| **Experiment 2: Feishu Federated Login** | Use a Feishu account as the enterprise identity source (IdP integration) | [feishu_idp](./feishu_idp/) |
+| **Experiment 3: Feishu Document Access** | Configure the Agent to access Feishu documents on behalf of the user | [feishu_outbound](./feishu_outbound/) |
 
 ## Core Features
 
@@ -52,19 +52,19 @@ Agent Identity governs the "user → application → Agent → resource" link se
 ```bash
 03-agentkit-identity/
 ├── README.md                           # This file
-├── 01_userpool_inbound/        # Experiment 1: Inbound Authentication
+├── userpool_inbound/           # Experiment 1: Inbound Authentication
 │   ├── README.md                       # Tutorial documentation
 │   ├── main.py                         # Sample code
 │   ├── pyproject.toml                  # Dependency configuration
 │   ├── .env.template                   # Environment variable template
 │   └── assets/                         # Screenshots and flowcharts
-└── 02_feishu_idp/              # Experiment 2: Feishu IdP Federated Login
+└── feishu_idp/                 # Experiment 2: Feishu IdP Federated Login
     ├── README.md
     ├── main.py
     ├── pyproject.toml
     ├── .env.template
     └── assets/
-└── 03_feishu_outbound/              # Experiment 3: Feishu Document Access
+└── feishu_outbound/                 # Experiment 3: Feishu Document Access
     ├── README.md
     ├── main.py
     ├── pyproject.toml
@@ -90,7 +90,7 @@ git clone https://github.com/volcengine/agentkit-samples.git
 cd python/01-tutorials/03-agentkit-identity
 
 # 2. Select the experiment directory
-cd 01_userpool_inbound  # or other experiments
+cd userpool_inbound  # or other experiments
 
 # 3. Configure environment variables
 cp .env.example .env

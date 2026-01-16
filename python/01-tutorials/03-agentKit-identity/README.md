@@ -37,9 +37,9 @@ Agent Identity 把“用户 → 应用 → Agent → 资源”的链路拆开治
 
 | 实验 | 说明 | 目录 |
 | ------ | ------ | ------ |
-| **实验1: 用户池认证** | 使用用户池管控智能体访问 (Inbound 认证) | [01_userpool_inbound](./01_userpool_inbound/) |
-| **实验2: 飞书联合登录** | 使用飞书账号作为企业身份源 (IdP 集成) | [02_feishu_idp](./02_feishu_idp/) |
-| **实验3: 飞书文档访问** | 配置 Agent 代表用户访问飞书文档 | [03_feishu_outbound](./03_feishu_outbound/) |
+| **实验1: 用户池认证** | 使用用户池管控智能体访问 (Inbound 认证) | [userpool_inbound](./userpool_inbound/) |
+| **实验2: 飞书联合登录** | 使用飞书账号作为企业身份源 (IdP 集成) | [feishu_idp](./feishu_idp/) |
+| **实验3: 飞书文档访问** | 配置 Agent 代表用户访问飞书文档 | [feishu_outbound](./feishu_outbound/) |
 
 ## 核心功能
 
@@ -52,19 +52,19 @@ Agent Identity 把“用户 → 应用 → Agent → 资源”的链路拆开治
 ```bash
 03-agentkit-identity/
 ├── README.md                           # 本文件
-├── 01_userpool_inbound/        # 实验1: Inbound 认证
+├── userpool_inbound/           # 实验1: Inbound 认证
 │   ├── README.md                       # 教程文档
 │   ├── main.py                         # 示例代码
 │   ├── pyproject.toml                  # 依赖配置
 │   ├── .env.template                   # 环境变量模板
 │   └── assets/                         # 截图和流程图
-└── 02_feishu_idp/              # 实验2: 飞书 IdP 联合登录
+└── feishu_idp/                 # 实验2: 飞书 IdP 联合登录
     ├── README.md
     ├── main.py
     ├── pyproject.toml
     ├── .env.template
     └── assets/
-└── 03_feishu_outbound/              # 实验3: 飞书文档访问
+└── feishu_outbound/                 # 实验3: 飞书文档访问
     ├── README.md
     ├── main.py
     ├── pyproject.toml
@@ -90,7 +90,7 @@ git clone https://github.com/volcengine/agentkit-samples.git
 cd python/01-tutorials/03-agentkit-identity
 
 # 2. 选择实验目录
-cd 01_userpool_inbound  # 或其他实验
+cd userpool_inbound  # 或其他实验
 
 # 3. 配置环境变量
 cp .env.example .env

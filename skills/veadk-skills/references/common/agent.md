@@ -80,3 +80,46 @@ agent = Agent(
     model_extra_config={"response_format": MathResponse},
 )
 ```
+
+运行完毕后，你需要将结果解析为你定义的 Pydantic 模型，例如：
+
+```python
+import asyncio
+import json
+
+from veadk import Agent, Runner
+
+agent = Agent()
+runner = Runner(agent=agent) # 挂载想要运行的 Agent
+
+response = asyncio.run(runner.run("你好")) # 使用 `run` 函数执行
+response = json.loads(response)
+
+parsed_response = MathResponse(**response)
+print(parsed_response) # BaseModel 实例
+```
+
+## 运行 Agent
+
+如果你想直接在 Python 中执行 Agent，可以通过定义 Runner 来执行：
+
+```python
+import asyncio
+
+from veadk import Agent, Runner
+
+agent = Agent()
+runner = Runner(agent=agent) # 挂载想要运行的 Agent
+
+response = asyncio.run(runner.run("你好")) # 使用 `run` 函数执行
+print(response)
+```
+
+通常情况下，你可以定义一个函数来将 Agent 的执行封装起来，例如：
+
+```python
+async def run_agent(agent: Agent, prompt: str) -> str:
+    runner = Runner(agent=agent)
+    response = await runner.run(prompt)
+    return response
+```

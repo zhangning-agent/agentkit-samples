@@ -7,6 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "google-adk==1.21.0",
     "veadk-python[extensions]==0.5.15",
-    "agentkit-sdk-python==0.4.2",
+    "agentkit-sdk-python==0.4.3",
     "python-dotenv>=1.0.0",
 ]
